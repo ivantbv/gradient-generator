@@ -4,13 +4,8 @@ body {
      background: linear-gradient(to right, rgba(243, 128, 87, 0.863), #3c7981cc);
     height: 100%;
 }
-
-.copy-clip {
-    margin: 50px;
-    /* background-color: rgba(153, 150, 150, 0.767); */
-}
-
 .copy-clip{
+    margin: 55px;
      display:inline-block;
     background-color: rgba(245, 245, 245, 0.5);
      padding:0.35em 1.2em;
@@ -19,8 +14,7 @@ body {
      border-radius:0.12em;
      box-sizing: border-box;
      text-decoration:none;
-     font-family:'Roboto',sans-serif;
-     font-weight:300;
+     font-family:'monospace';
      color:#FFFFFF;
      text-align:center;
      transition: all 0.2s;

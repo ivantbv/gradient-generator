@@ -3,7 +3,7 @@ const colOneInput = document.querySelector('#color1')
 const colTwoInput = document.querySelector('#color2');
 const body = document.getElementsByTagName('body');
 const insertBef = document.querySelector('#insert')
-//const copyToClip = document.querySelector('.copy-clip');
+
 const hexToRgb = hex =>
   hex.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i
              ,(m, r, g, b) => '#' + r + r + g + g + b + b)
