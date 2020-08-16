@@ -2,7 +2,8 @@ const currentCol = document.querySelector('#current-col');
 const colOneInput = document.querySelector('#color1')
 const colTwoInput = document.querySelector('#color2');
 const body = document.getElementsByTagName('body');
-const insertBef = document.querySelector('#insert')
+const insertBef = document.querySelector('#insert');
+const randomCol = document.querySelector('#random');
 
 const hexToRgb = hex =>
   hex.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i
@@ -29,8 +30,6 @@ colOneInput.addEventListener('input', function() {
 
 })
 
-
-
 colTwoInput.addEventListener('input', () => {
     document.body.insertBefore(copyBtn, insertBef)
     
@@ -44,9 +43,38 @@ document.querySelector('#current-col').style.width = '330px';
 document.querySelector('#current-col').style.border = 'solid 2px rgb(141, 136, 136)';
 })
 
+let randomColor = randomizeCol();
+let randomColor2 = randomizeCol();
+
+randomCol.addEventListener('click', () => {
+    document.body.insertBefore(copyBtn, insertBef)
+   let thisColor = document.body.style.background = `linear-gradient(to right, ${randomizeCol(colOneInput.value)}, ${randomizeCol(colTwoInput.value)})`
+//background: linear-gradient(to right, rgba(243, 128, 87, 0.863), #3c7981cc);
+let replaceLetters = thisColor.replace('linear-gradient(to right, ', '');
+let popLastParanth = Array.from(replaceLetters).slice(0, -1);
+
+currentCol.textContent = `${popLastParanth.join('')}`;
+
+document.querySelector('#current-col').style.background = 'rgba(245, 245, 245, 0.7)';
+document.querySelector('#current-col').style.width = '330px';
+document.querySelector('#current-col').style.border = 'solid 2px rgb(141, 136, 136)';
+})
+
 copyBtn.addEventListener('click', () => { 
     copy(currentCol.textContent)
 })
+
+// function randomizeCol(val) {
+//     return Math.floor(Math.random() * Math.floor(val));
+// }
+
+function randomizeCol() {
+    var num = Math.round(0xffffff * Math.random());
+    var r = num >> 16;
+    var g = num >> 8 & 255;
+    var b = num & 255;
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
+}
 
 function copy(text) {
     let input = document.createElement('textarea');
