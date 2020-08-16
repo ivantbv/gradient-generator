@@ -9,3 +9,5 @@ A simple gradient generator that does the following:
 -2 RGB values are generated in real time
 
 -a button to copy the values to the user's clipboard
+
+-a button that generates random values

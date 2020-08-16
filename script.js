@@ -36,7 +36,7 @@ colTwoInput.addEventListener('input', () => {
     let toRgbOne = hexToRgb(colOneInput.value);
     let toRgbTwo = hexToRgb(colTwoInput.value);
    document.body.style.background = `linear-gradient(to right, ${colOneInput.value}, ${colTwoInput.value})`
-//background: linear-gradient(to right, rgba(243, 128, 87, 0.863), #3c7981cc);
+
 currentCol.textContent = `rgb(${toRgbOne}), rgb(${toRgbTwo})`;
 document.querySelector('#current-col').style.background = 'rgba(245, 245, 245, 0.7)';
 document.querySelector('#current-col').style.width = '330px';
@@ -49,7 +49,6 @@ let randomColor2 = randomizeCol();
 randomCol.addEventListener('click', () => {
     document.body.insertBefore(copyBtn, insertBef)
    let thisColor = document.body.style.background = `linear-gradient(to right, ${randomizeCol(colOneInput.value)}, ${randomizeCol(colTwoInput.value)})`
-//background: linear-gradient(to right, rgba(243, 128, 87, 0.863), #3c7981cc);
 let replaceLetters = thisColor.replace('linear-gradient(to right, ', '');
 let popLastParanth = Array.from(replaceLetters).slice(0, -1);
 
@@ -63,10 +62,6 @@ document.querySelector('#current-col').style.border = 'solid 2px rgb(141, 136, 1
 copyBtn.addEventListener('click', () => { 
     copy(currentCol.textContent)
 })
-
-// function randomizeCol(val) {
-//     return Math.floor(Math.random() * Math.floor(val));
-// }
 
 function randomizeCol() {
     var num = Math.round(0xffffff * Math.random());
