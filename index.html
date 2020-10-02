@@ -7,9 +7,11 @@
         <h1>Gradient Generator</h1> 
         <!-- <div id="ball"></div> -->
         <h2>Current color:</h2>
-        <h3 id="current-col"></h3>
+        <h3 id="current-col">
+           background: linear-gradient(to right, rgb(235, 139, 104), rgb(60, 121, 129))
+        </h3>
         <div>
-        <input type="color" id="color1" value="#e78111">
+        <input type="color" id="color1" value="#EB8B68">
         <input type="color" id="color2" value="#3c7981"> <br>
     </div>
         <!-- <div>
@@ -17,8 +19,11 @@
         <button id="to-right">To Right</button>
         </div> -->
         <div id="insert"></div>
-        <div id="space"></div>
+        <!-- <div id="space"></div> -->
         <button id="random">Get Random</button>
+        <div class="slidecontainer">
+            <input type="range" class="slider" id="degrees" name="degrees" min="0" max="360"> <br>
+          </div>
         <script src="script.js"></script>
     </body>
 </html>
