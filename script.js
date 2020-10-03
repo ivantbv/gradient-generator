@@ -26,7 +26,7 @@ colOneInput.addEventListener('input', function() {
     let toRgbTwo = hexToRgb(colTwoInput.value);
    document.body.style.background = `linear-gradient(to left, ${colTwoInput.value}, ${colOneInput.value})`
    //currentCol.textContent = document.body.style.background;
-   currentCol.textContent = `background: linear-gradient(to left, rgb(${toRgbOne}), rgb(${toRgbTwo}))`;
+   currentCol.textContent = `background: linear-gradient(to right, rgb(${toRgbOne}), rgb(${toRgbTwo}))`;
 })
 
 colTwoInput.addEventListener('input', () => {
@@ -83,6 +83,7 @@ degreesSlider.addEventListener('input', (e) => {
         document.body.style.background = `linear-gradient(${e.target.value}deg, ${colOneInput.value}, ${colTwoInput.value})`
         currentCol.textContent = `background: linear-gradient(${e.target.value}deg, rgb(${toRgbOne}), rgb(${toRgbTwo}))`;
     }
+
 })
 
 function randomizeCol() {
