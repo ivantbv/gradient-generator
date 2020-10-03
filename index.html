@@ -6,6 +6,10 @@
     <body>
         <h1>Gradient Generator</h1> 
         <!-- <div id="ball"></div> -->
+        <div>
+        <input type="radio" id="radial" name="gradient" value="radial" > <label for="radial">Radial</label> 
+        <input type="radio" id="linear" name="gradient" value="linear" checked> <label for="linear">Linear</label>
+    </div>
         <h2>Current color:</h2>
         <h3 id="current-col">
            background: linear-gradient(to right, rgb(235, 139, 104), rgb(60, 121, 129))
@@ -22,10 +26,12 @@
         <!-- <div id="space"></div> -->
         <button id="random">Get Random</button>
 
-        Gradient Tilt
+        <div class="slide-wrapper"> Gradient Angle
         <div class="slidecontainer">
+            
             <input type="range" class="slider" id="degrees" name="degrees" min="0" max="360"> <br>
           </div>
+        </div>
         <script src="script.js"></script>
     </body>
 </html>
