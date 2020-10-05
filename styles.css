@@ -28,7 +28,14 @@ body {
     margin-left: -240px;
     margin-top: -55px;
 } */
-
+#grad-angle {
+    background: rgb(245 245 245 / 67%);
+    border: solid 2px rgb(141, 136, 136);
+    width: 125px;
+    padding: 3px;
+    margin-bottom: 0;
+    margin-left: 4px;
+}
 .radial-options {
    display: none;
 }
@@ -42,12 +49,20 @@ body {
     margin-top: 0;
   }
 
+  #checkbox:hover {
+      cursor: pointer;
+  }
+
 /* #radial-choice {
     background: rgba(245, 245, 245, 0.7);
 } */
 
 #options-para {
-    margin-bottom: 0;
+    background: rgb(245 245 245 / 67%);
+    border: solid 2px rgb(141, 136, 136);
+    width: 125px;
+    padding: 3px;
+    margin-bottom: 3px;
 }
 .copy-clip{
     margin: 35px;
