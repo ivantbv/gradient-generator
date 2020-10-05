@@ -6,7 +6,7 @@
     <body>
         <h1>Gradient Generator</h1> 
         <!-- <div id="ball"></div> -->
-        <div>
+        <div id="radio-options">
         <input type="radio" id="radial" name="gradient" value="radial" > <label for="radial">Radial</label> 
         <input type="radio" id="linear" name="gradient" value="linear" checked> <label for="linear">Linear</label>
     </div>
@@ -18,20 +18,13 @@
           </div>
         </div>
 
-        <!-- <div class="radial-options">
-        <label for="radial-choice">
-           <p id="options-para"> Choose a radial</p> <br>
-        </label>  
-        <select id="radial-choice" name="radial-choice">
-  
-        </div> -->
         <div class="radial-options">
         <label for="radial-choice" class="check"> <p id="options-para">Circle At Center</p>
             <input type="checkbox" id="checkbox">
             <span class="checkmark"></span>
           </label>
         </div>
-        <h2>Current color:</h2>
+        <h2 id="h2">Current color:</h2>
         <h3 id="current-col">
            background: linear-gradient(to right, rgb(235, 139, 104), rgb(60, 121, 129))
         </h3>
