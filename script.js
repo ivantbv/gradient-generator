@@ -81,16 +81,11 @@ checkBox.addEventListener('click', () => {
     }
 })
 
-// if (buttonRand == true && radialOrLinear == true && checkBox.checked) {
-//     document.body.style.background = `radial-gradient(circle at 50%, ${randomC3}, ${randomC1}, ${randomC2})`
-//         currentCol.textContent = `background: ${document.body.style.background}`
-// }
-
 function colThreeFunc() {
 colThreeInput.addEventListener('input', () => {
     document.body.style.background = `radial-gradient(circle at 50%, ${colThreeInput.value}, ${colOneInput.value}, ${colTwoInput.value})`
      currentCol.textContent = `background: ${document.body.style.background}`
-
+    buttonRand = false;
 })
 }
 colThreeFunc();
@@ -102,15 +97,16 @@ function colThreeInputProperties() {
 
 radialGrad.addEventListener('change', () => {
     colThreeInput.style.display = 'inline-block';
-    
-    if (checkBox.checked) {
-        colThreeInputProperties();
-    }
-    
-    radialOptionsDiv.style.display = 'grid';
     radialOrLinear = true;
+    
+
+    radialOptionsDiv.style.display = 'grid';
+    
     sliderWrap.style.display = 'none';
-    if (buttonRand == true && checkBox.checked) {
+    if (buttonRand == false && checkBox.checked && radialOrLinear == true) {
+        document.body.style.background = `radial-gradient(circle at 50%, ${colThreeInput.value}, ${colOneInput.value}, ${colTwoInput.value})`
+    currentCol.textContent = `background: ${document.body.style.background}`
+    } else if (buttonRand == true && checkBox.checked) {
         document.body.style.background = `radial-gradient(circle at 50%, ${randomC3}, ${randomC1}, ${randomC2})`
         currentCol.textContent = `background: ${document.body.style.background}`
     } else if (buttonRand == true) {
@@ -120,6 +116,11 @@ radialGrad.addEventListener('change', () => {
      document.body.style.background = `radial-gradient(circle, ${colTwoInput.value}, ${colOneInput.value})`
      currentCol.textContent = `background: ${document.body.style.background}`
     }
+   
+   if (document.body.style.background == `radial-gradient(circle, rgb(60, 121, 129), rgb(235, 139, 104))` && checkBox.checked) {
+    document.body.style.background = `radial-gradient(circle at 50% center, rgb(0, 0, 0), rgb(235, 139, 104), rgb(60, 121, 129))`
+    currentCol.textContent = `background: ${document.body.style.background}`
+   }
 
 })
 
@@ -179,6 +180,11 @@ colOneInput.addEventListener('input', function() {
     // if (checkBox.checked) {
     //     colThreeInputProperties()
     // }
+
+    if ( buttonRand == false && checkBox.checked && radialOrLinear == true) {
+        document.body.style.background = `radial-gradient(circle at 50%, ${colThreeInput.value}, ${colOneInput.value}, ${colTwoInput.value})`
+    currentCol.textContent = `background: ${document.body.style.background}`
+    } 
     colOneValue = colOneInput.value;
 })
 
@@ -206,6 +212,11 @@ colTwoInput.addEventListener('input', () => {
     //  if (checkBox.checked) {
     //     colThreeInputProperties()
     // }
+
+    if ( buttonRand == false && checkBox.checked && radialOrLinear == true) {
+        document.body.style.background = `radial-gradient(circle at 50%, ${colThreeInput.value}, ${colOneInput.value}, ${colTwoInput.value})`
+    currentCol.textContent = `background: ${document.body.style.background}`
+    } 
 })
 
 let randomColor = randomizeCol();
