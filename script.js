@@ -8,27 +8,132 @@ const degreesSlider = document.querySelector('#degrees');
 const radialGrad = document.querySelector('#radial');
 const linearGrad = document.querySelector('#linear')
 const sliderWrap = document.querySelector('.slide-wrapper')
+const radialOptionsDiv = document.querySelector('.radial-options');
+const checkBox = document.querySelector('#checkbox');
+const colorsContainer = document.querySelector('.colors-div');
 let buttonRand;
 let radialOrLinear = false;
 let randomC1;
 let randomC2;
+let randomC3;
+let colOneValue;
+
+let colThreeInput = document.createElement('input');
+colThreeInput.type = 'color';
+checkBox.addEventListener('click', () => {
+    let toRgbOne = hexToRgb(colOneInput.value);
+    let toRgbTwo = hexToRgb(colTwoInput.value);
+    let toRgbThree = hexToRgb(colThreeInput.value);
+    if (checkBox.checked) {
+    colorsContainer.appendChild(colThreeInput);
+
+//     if (buttonRand == true) {
+//         document.body.style.background = `radial-gradient(circle, ${randomC1}, ${randomC2})`
+//         currentCol.textContent = `background: ${document.body.style.background}`
+//     } else {
+//         if (radialOrLinear == true) {
+//             document.body.style.background = `radial-gradient(circle, ${colTwoInput.value}, ${colOneInput.value})`
+//         currentCol.textContent = `background: ${document.body.style.background}`
+//          } else if (radialOrLinear == false) {
+//             document.body.style.background = `linear-gradient(to right, ${colOneValue}, ${colTwoInput.value})`
+//  currentCol.textContent = `background: ${document.body.style.background}`
+//         }
+//     }
+
+    if (buttonRand == true && radialOrLinear == true) {
+        document.body.style.background = `radial-gradient(circle at 50%, ${randomC3}, ${randomC1}, ${randomC2})`
+            currentCol.textContent = `background: ${document.body.style.background}`
+    } else {
+        if (radialOrLinear == true) {
+            document.body.style.background = `radial-gradient(circle, ${colTwoInput.value}, ${colOneInput.value})`
+        currentCol.textContent = `background: ${document.body.style.background}`
+         } else if (radialOrLinear == false) {
+            document.body.style.background = `linear-gradient(to right, ${colOneValue}, ${colTwoInput.value})`
+ currentCol.textContent = `background: ${document.body.style.background}`
+        }
+
+    document.body.style.background = `radial-gradient(circle at 50%, ${colThreeInput.value}, ${colOneInput.value}, ${colTwoInput.value})`
+     currentCol.textContent = `background: ${document.body.style.background}`
+    }
+    } else if (checkBox.checked == false) {
+        colorsContainer.removeChild(colThreeInput);
+
+        if (radialOrLinear == false && buttonRand == false) {
+            document.body.style.background = `linear-gradient(to right, ${colOneValue}, ${colTwoInput.value})`
+     currentCol.textContent = `background: ${document.body.style.background}`
+        } else if (radialOrLinear == true && buttonRand == false) {
+            document.body.style.background = `radial-gradient(circle, ${colTwoInput.value}, ${colOneInput.value})`
+            currentCol.textContent = `background: ${document.body.style.background}`
+        }
+
+        if (buttonRand == true) {
+            document.body.style.background = `radial-gradient(circle, ${randomC1}, ${randomC2})`
+            currentCol.textContent = `background: ${document.body.style.background}`
+        } else {
+            if (radialOrLinear == true) {
+                document.body.style.background = `radial-gradient(circle, ${colTwoInput.value}, ${colOneInput.value})`
+            currentCol.textContent = `background: ${document.body.style.background}`
+             } else if (radialOrLinear == false) {
+                document.body.style.background = `linear-gradient(to right, ${colOneValue}, ${colTwoInput.value})`
+     currentCol.textContent = `background: ${document.body.style.background}`
+            }
+        }
+    }
+})
+
+function colThreeFunc() {
+colThreeInput.addEventListener('input', () => {
+    document.body.style.background = `radial-gradient(circle at 50%, ${colThreeInput.value}, ${colOneInput.value}, ${colTwoInput.value})`
+     currentCol.textContent = `background: ${document.body.style.background}`
+    buttonRand = false;
+})
+}
+colThreeFunc();
+
+function colThreeInputProperties() {
+    document.body.style.background = `radial-gradient(circle at 50%, ${colThreeInput.value}, ${colOneInput.value}, ${colTwoInput.value})`
+    currentCol.textContent = `background: ${document.body.style.background}`
+}
 
 radialGrad.addEventListener('change', () => {
+    colThreeInput.style.display = 'inline-block';
     radialOrLinear = true;
-    sliderWrap.style.visibility = 'hidden';
-    if (buttonRand == true) {
+    
+
+    radialOptionsDiv.style.display = 'grid';
+    
+    sliderWrap.style.display = 'none';
+    if (buttonRand == false && checkBox.checked && radialOrLinear == true) {
+        document.body.style.background = `radial-gradient(circle at 50%, ${colThreeInput.value}, ${colOneInput.value}, ${colTwoInput.value})`
+    currentCol.textContent = `background: ${document.body.style.background}`
+    } else if (buttonRand == true && checkBox.checked) {
+        document.body.style.background = `radial-gradient(circle at 50%, ${randomC3}, ${randomC1}, ${randomC2})`
+        currentCol.textContent = `background: ${document.body.style.background}`
+    } else if (buttonRand == true) {
         document.body.style.background = `radial-gradient(circle, ${randomC1}, ${randomC2})`
         currentCol.textContent = `background: ${document.body.style.background}`
     } else{
      document.body.style.background = `radial-gradient(circle, ${colTwoInput.value}, ${colOneInput.value})`
      currentCol.textContent = `background: ${document.body.style.background}`
     }
+   
+   if (document.body.style.background == `radial-gradient(circle, rgb(60, 121, 129), rgb(235, 139, 104))` && checkBox.checked) {
+    document.body.style.background = `radial-gradient(circle at 50% center, rgb(0, 0, 0), rgb(235, 139, 104), rgb(60, 121, 129))`
+    currentCol.textContent = `background: ${document.body.style.background}`
+   }
+
 })
 
 linearGrad.addEventListener('change', () => {
+    //checkBox.checked = false;
+    radialOptionsDiv.style.display = 'none';
     radialOrLinear = false;
-    sliderWrap.style.visibility = 'visible'
+    sliderWrap.style.display = 'grid';
 
+    if (colThreeInput || checkBox.checked) {
+        //colorsContainer.removeChild(colThreeInput);
+        colThreeInput.style.display = 'none';
+    }
     // let toRgbOne = hexToRgb(colOneInput.value);
     // let toRgbTwo = hexToRgb(colTwoInput.value);
 
@@ -39,6 +144,8 @@ linearGrad.addEventListener('change', () => {
      document.body.style.background = `linear-gradient(to right, ${colOneInput.value}, ${colTwoInput.value})`
      currentCol.textContent = `background: ${document.body.style.background}`
     }
+
+    
 })
 
 const hexToRgb = hex =>
@@ -70,6 +177,15 @@ colOneInput.addEventListener('input', function() {
    //currentCol.textContent = document.body.style.background;
    currentCol.textContent = `background: linear-gradient(to right, rgb(${toRgbOne}), rgb(${toRgbTwo}))`;
     }
+    // if (checkBox.checked) {
+    //     colThreeInputProperties()
+    // }
+
+    if ( buttonRand == false && checkBox.checked && radialOrLinear == true) {
+        document.body.style.background = `radial-gradient(circle at 50%, ${colThreeInput.value}, ${colOneInput.value}, ${colTwoInput.value})`
+    currentCol.textContent = `background: ${document.body.style.background}`
+    } 
+    colOneValue = colOneInput.value;
 })
 
 colTwoInput.addEventListener('input', () => {
@@ -92,6 +208,15 @@ colTwoInput.addEventListener('input', () => {
 
    currentCol.textContent = `background: linear-gradient(to right, rgb(${toRgbOne}), rgb(${toRgbTwo}))`;
      }
+
+    //  if (checkBox.checked) {
+    //     colThreeInputProperties()
+    // }
+
+    if ( buttonRand == false && checkBox.checked && radialOrLinear == true) {
+        document.body.style.background = `radial-gradient(circle at 50%, ${colThreeInput.value}, ${colOneInput.value}, ${colTwoInput.value})`
+    currentCol.textContent = `background: ${document.body.style.background}`
+    } 
 })
 
 let randomColor = randomizeCol();
@@ -102,6 +227,7 @@ randomCol.addEventListener('click', () => {
     //document.body.insertBefore(copyBtn, insertBef)
    randomC1 = randomizeCol(colOneInput.value);
    randomC2 = randomizeCol(colTwoInput.value);
+   randomC3 = randomizeCol(colThreeInput.value);
 
    if (radialOrLinear == true) {
     thisColor = document.body.style.background = `radial-gradient(circle, ${randomC1}, ${randomC2})` 
@@ -116,6 +242,11 @@ currentCol.textContent = `background: ${document.body.style.background}`;
 }
 //currentCol.textContent = `background: ${thisColor}`;
 buttonRand = true;
+if (checkBox.checked) {
+    document.body.style.background = `radial-gradient(circle at 50%, ${randomC3}, ${randomC1}, ${randomC2})`
+        currentCol.textContent = `background: ${document.body.style.background}`
+}
+
 })
 
 copyBtn.addEventListener('click', () => { 

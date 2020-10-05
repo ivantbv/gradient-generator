@@ -10,11 +10,32 @@
         <input type="radio" id="radial" name="gradient" value="radial" > <label for="radial">Radial</label> 
         <input type="radio" id="linear" name="gradient" value="linear" checked> <label for="linear">Linear</label>
     </div>
+    <div class="slide-wrapper"> 
+        <p> Gradient Angle </p>
+        <div class="slidecontainer">
+            
+            <input type="range" class="slider" id="degrees" name="degrees" min="0" max="360"> <br>
+          </div>
+        </div>
+
+        <!-- <div class="radial-options">
+        <label for="radial-choice">
+           <p id="options-para"> Choose a radial</p> <br>
+        </label>  
+        <select id="radial-choice" name="radial-choice">
+  
+        </div> -->
+        <div class="radial-options">
+        <label for="radial-choice" class="check"> <p id="options-para">Circle At Center</p> <br>
+            <input type="checkbox" id="checkbox">
+            <span class="checkmark"></span>
+          </label>
+        </div>
         <h2>Current color:</h2>
         <h3 id="current-col">
            background: linear-gradient(to right, rgb(235, 139, 104), rgb(60, 121, 129))
         </h3>
-        <div>
+        <div class="colors-div">
         <input type="color" id="color1" value="#EB8B68">
         <input type="color" id="color2" value="#3c7981"> <br>
     </div>
@@ -26,12 +47,6 @@
         <!-- <div id="space"></div> -->
         <button id="random">Get Random</button>
 
-        <div class="slide-wrapper"> Gradient Angle
-        <div class="slidecontainer">
-            
-            <input type="range" class="slider" id="degrees" name="degrees" min="0" max="360"> <br>
-          </div>
-        </div>
         <script src="script.js"></script>
     </body>
 </html>
