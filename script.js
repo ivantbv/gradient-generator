@@ -134,6 +134,7 @@ linearGrad.addEventListener('change', () => {
         //colorsContainer.removeChild(colThreeInput);
         colThreeInput.style.display = 'none';
     }
+
     // let toRgbOne = hexToRgb(colOneInput.value);
     // let toRgbTwo = hexToRgb(colTwoInput.value);
 
@@ -239,10 +240,16 @@ randomCol.addEventListener('click', () => {
 // let popLastParanth = Array.from(replaceLetters).slice(0, -1);
 //currentCol.textContent = `${popLastParanth.join('')}`; //to display only RGB values without linear-gradient property
 currentCol.textContent = `background: ${document.body.style.background}`;
-}
+}  
+
+// if (checkBox.checked == true && radialOrLinear == false) {
+//     console.log('NIGGER')
+//  document.body.style.background = `linear-gradient(to right, ${randomC1}, ${randomC2})`
+//  currentCol.textContent = `background: ${document.body.style.background}`;
+// }
 //currentCol.textContent = `background: ${thisColor}`;
 buttonRand = true;
-if (checkBox.checked) {
+if (checkBox.checked && radialOrLinear == true) {
     document.body.style.background = `radial-gradient(circle at 50%, ${randomC3}, ${randomC1}, ${randomC2})`
         currentCol.textContent = `background: ${document.body.style.background}`
 }
