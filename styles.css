@@ -17,12 +17,113 @@ body {
     justify-items: center;
 }
 
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(245, 245, 245, 0.349);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 20px;
+
+    display: block;
+    align-items: center;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    color: #423d3d;
+    position: absolute;
+    top: 0;
+    right: 11px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  #main {
+    transition: margin-left .2s;
+    padding: 16px;
+    position: absolute;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  .user-picks {
+      display: grid;
+      align-items: center;
+      justify-content: center;
+  }
+
+  #first, #second, #third, #fourth, #fifth, #sixth, #seventh, #eighth, #ninth {
+      height: 65px;
+      width: 105px;
+      border: 1px solid rgb(99, 99, 99);
+      text-align: center;
+      cursor: pointer;
+  }
+
+  #first {
+    background: radial-gradient(circle, #0fd6f0, #5242cd)
+  }
+
+  #second {
+    background: radial-gradient(circle, #eec47c, #cd42c8)
+  }
+
+  #third {
+    background: linear-gradient(to right, #981aff, #ea5353)
+  }
+
+  #fourth {
+    background: linear-gradient(360deg, #c606e7, #aa6f69)
+  }
+
+  #fifth {
+    background: linear-gradient(360deg, #811aff, #20546f)
+  }
+
+  #sixth {
+    background: radial-gradient(circle at 50% center, #51b1b4, #e436cf, #fa5961)
+  }
+
+  #seventh {
+    background: radial-gradient(circle at 50% center, #f64646, #23398b, #0c114f)
+  }
+
+  #eighth {
+    background: radial-gradient(circle at 50% center, #700ead, #9f2c89, #1f3169)
+  }
+
+  #ninth {
+    background: radial-gradient(circle, #ec5153, #8e7af0)
+  }
+
+
 #radio-options label {
    font-size: larger;
    font-weight: bolder;
 
-   transition: 0.3s ease-in-out, 
-                    transform 0.3s ease;
+   transition: 0.1s ease-in-out, 
+                    transform 0.1s ease;
 }
 
 #radio-options label:hover {

@@ -17,11 +17,62 @@ let randomC1;
 let randomC2;
 let randomC3;
 let colOneValue;
-
+const userPicks = document.querySelectorAll('.user-picks');
 const h2Tag = document.querySelector('#h2');
 
 let colThreeInput = document.createElement('input');
 colThreeInput.type = 'color';
+
+userPicks.forEach(color => color.addEventListener('click', (e) => {
+    let style = window.getComputedStyle(e.target)
+    let col = style.getPropertyValue('background');
+ 
+    document.body.style.background = col;
+    currentCol.textContent = `background: ${document.body.style.background}`.slice(0,-67)
+    h2Tag.style.background = `${document.body.style.background}`
+
+    if (currentCol.textContent == 'background: radial-gradient(circle, rgb(15, 214, 240), rgb(82, 66, 205))') {
+        colTwoInput.value = '#0fd6f0'
+        colOneInput.value = '#5242cd'
+    }
+     if (currentCol.textContent == 'background: radial-gradient(circle, rgb(238, 196, 124), rgb(205, 66, 200))') {
+        colTwoInput.value = '#eec47c'
+        colOneInput.value = '#cd42c8'
+    }
+    if (currentCol.textContent == 'background: linear-gradient(to right, rgb(152, 26, 255), rgb(234, 83, 83))') {
+        colOneInput.value = '#981aff'
+        colTwoInput.value = '#ea5353'
+    }
+    if (currentCol.textContent == 'background: linear-gradient(360deg, rgb(198, 6, 231), rgb(170, 111, 105))') {
+        colOneInput.value = '#c606e7'
+        colTwoInput.value = '#aa6f69'
+    }
+    if (currentCol.textContent == 'background: linear-gradient(360deg, rgb(129, 26, 255), rgb(32, 84, 111))') {
+        colOneInput.value = '#811aff'
+        colTwoInput.value = '#20546f'
+    }
+    if (currentCol.textContent == 'background: radial-gradient(circle at 50% center, rgb(81, 177, 180), rgb(228, 54, 207), rgb(250, 89, 97))') {
+        colOneInput.value = '#e436cf' 
+        colTwoInput.value = '#fa5961'
+        colThreeInput.value = '#51b1b4'
+    }
+    if (currentCol.textContent == 'background: radial-gradient(circle at 50% center, rgb(246, 70, 70), rgb(35, 57, 139), rgb(12, 17, 79))') {
+        colOneInput.value =  '#23398b'
+        colTwoInput.value = '#0c114f'
+        colThreeInput.value = '#f64646'
+    }
+    if (currentCol.textContent == 'background: radial-gradient(circle at 50% center, rgb(112, 14, 173), rgb(159, 44, 137), rgb(31, 49, 105))') {
+        colTwoInput.value =  '#1f3169'
+        colOneInput.value = '#9f2c89'
+        colThreeInput.value = '#700ead'
+    }
+    if (currentCol.textContent == 'background: radial-gradient(circle, rgb(236, 81, 83), rgb(142, 122, 240))') {
+        colTwoInput.value = '#ec5153';
+        colOneInput.value = '#8e7af0';
+    }
+
+}))
+
 colThreeInput.classList.add('col3');
 checkBox.addEventListener('click', () => {
 
@@ -110,7 +161,6 @@ radialGrad.addEventListener('change', () => {
     currentCol.textContent = `background: ${document.body.style.background}`
    }
    h2Tag.style.background = `${document.body.style.background}`;
-   console.log(colOneInput.value, colTwoInput.value);
 })
 
 linearGrad.addEventListener('change', () => {
@@ -256,3 +306,19 @@ function copy(text) {
     document.body.removeChild(input);
     return result;
 }
+const sideNav = document.getElementById("sidenavBar")
+const mainNav = document.getElementById("main")
+
+function openNav() {
+    sideNav.style.width = "200px";
+    
+    mainNav.style.marginLeft = "200px";
+    mainNav.style.display = 'none';
+  }
+  
+  function closeNav() {
+    sideNav.style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+
+    mainNav.style.display = 'block';
+  }
