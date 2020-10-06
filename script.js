@@ -258,6 +258,9 @@ randomCol.addEventListener('click', () => {
 
     thisColor = document.body.style.background = `linear-gradient(to right, ${randomC1}, ${randomC2})`
     currentCol.textContent = `background: ${document.body.style.background}`;
+        // let replaceLetters = thisColor.replace('linear-gradient(to right, ', '');
+// let popLastParanth = Array.from(replaceLetters).slice(0, -1);
+//currentCol.textContent = `${popLastParanth.join('')}`; //to display only RGB values without linear-gradient property
 }  
 
 buttonRand = true;
