@@ -17,7 +17,6 @@ body {
     justify-items: center;
 }
 
-
 .sidenav {
     height: 100%;
     width: 0;
@@ -51,15 +50,29 @@ body {
     color: #423d3d;
     position: absolute;
     top: 0;
-    right: 11px;
+    right: 140px;
     font-size: 36px;
     margin-left: 50px;
   }
   
   #main {
     transition: margin-left .2s;
-    padding: 16px;
+    padding: 12px;
     position: absolute;
+  }
+
+  #main span {
+    font-size: 32px;
+    cursor: pointer;
+    font-weight: bolder;
+    color: #5c5b5b;
+    transition: 0.2s ease-in-out, 
+                    transform 0.3s ease;
+ }
+ 
+ #main span:hover {
+    color: white;
+    transition: opacity .2s;
   }
   
   @media screen and (max-height: 450px) {
@@ -122,13 +135,13 @@ body {
    font-size: larger;
    font-weight: bolder;
 
-   transition: 0.1s ease-in-out, 
-                    transform 0.1s ease;
+   transition: 0.3s ease-in-out, 
+                    transform 0.3s ease;
 }
 
 #radio-options label:hover {
    color: white;
-   transition: opacity .2s;
+   transition: opacity .3s;
  }
 
 /* #ball {

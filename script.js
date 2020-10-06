@@ -30,6 +30,7 @@ userPicks.forEach(color => color.addEventListener('click', (e) => {
     document.body.style.background = col;
     currentCol.textContent = `background: ${document.body.style.background}`.slice(0,-67)
     h2Tag.style.background = `${document.body.style.background}`
+    console.log(currentCol.textContent.replace('background: linear-gradient(to right, rgb(', ''));
 
     if (currentCol.textContent == 'background: radial-gradient(circle, rgb(15, 214, 240), rgb(82, 66, 205))') {
         colTwoInput.value = '#0fd6f0'
@@ -258,6 +259,18 @@ randomCol.addEventListener('click', () => {
 
     thisColor = document.body.style.background = `linear-gradient(to right, ${randomC1}, ${randomC2})`
     currentCol.textContent = `background: ${document.body.style.background}`;
+    let sliced = thisColor.slice(30); 
+    let R = sliced.substr(0, sliced.indexOf(','))
+    let G = thisColor.slice(30).split(',')[1]
+    let B = thisColor.slice(30).split(',')[2].slice(0, -1);
+
+    let R2 = thisColor.slice(-13).substr(0, thisColor.slice(-13).indexOf(',')).replace(/[^0-9.]/g,"")
+    let G2 = thisColor.slice(-13).split(',')[1];
+    let B2 = thisColor.slice(-13).split(',')[2].slice(0, -2);
+    
+    colOneInput.value = rgbToHex(Number(R),Number(G),Number(B));
+    colTwoInput.value = rgbToHex(Number(R2),Number(G2),Number(B2));
+    
         // let replaceLetters = thisColor.replace('linear-gradient(to right, ', '');
 // let popLastParanth = Array.from(replaceLetters).slice(0, -1);
 //currentCol.textContent = `${popLastParanth.join('')}`; //to display only RGB values without linear-gradient property
@@ -270,6 +283,15 @@ if (checkBox.checked && radialOrLinear == true) {
 }
 h2Tag.style.background = `${document.body.style.background}`;
 })
+
+function componentToHex(c) {
+    let hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+  }
+  
+  function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+  }
 
 copyBtn.addEventListener('click', () => { 
     copy(currentCol.textContent)
