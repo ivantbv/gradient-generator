@@ -153,7 +153,7 @@ radialGrad.addEventListener('change', () => {
         document.body.style.background = `radial-gradient(circle, ${randomC1}, ${randomC2})`
         currentCol.textContent = `background: ${document.body.style.background}`
     } else{
-     document.body.style.background = `radial-gradient(circle, ${colTwoInput.value}, ${colOneInput.value})`
+     document.body.style.background = `radial-gradient(circle, ${colOneInput.value}, ${colTwoInput.value})`
      currentCol.textContent = `background: ${document.body.style.background}`
     }
    
@@ -202,8 +202,8 @@ colOneInput.addEventListener('input', function() {
     if (radialOrLinear == true) {
         let toRgbOne = hexToRgb(colOneInput.value);
         let toRgbTwo = hexToRgb(colTwoInput.value);
-       document.body.style.background = `radial-gradient(circle, ${colTwoInput.value}, ${colOneInput.value})`
-       currentCol.textContent = `background: radial-gradient(circle, rgb(${toRgbTwo}), rgb(${toRgbOne}))`;
+       document.body.style.background = `radial-gradient(circle, ${colOneInput.value}, ${colTwoInput.value})`
+       currentCol.textContent = `background: ${document.body.style.background}`
     } else if (radialOrLinear == false) {
     let toRgbOne = hexToRgb(colOneInput.value);
     let toRgbTwo = hexToRgb(colTwoInput.value);
@@ -222,18 +222,12 @@ colOneInput.addEventListener('input', function() {
 colTwoInput.addEventListener('input', () => {
     buttonRand = false;
     if (radialOrLinear == true) {
-        let toRgbOne = hexToRgb(colOneInput.value);
-        let toRgbTwo = hexToRgb(colTwoInput.value);
-       document.body.style.background = `radial-gradient(circle, ${colTwoInput.value}, ${colOneInput.value})`
-    
-       currentCol.textContent = `background: radial-gradient(circle, rgb(${toRgbTwo}), rgb(${toRgbOne}))`;
+       document.body.style.background = `radial-gradient(circle, ${colOneInput.value}, ${colTwoInput.value})`
+       currentCol.textContent = `background: ${document.body.style.background}`;
      } else if (radialOrLinear == false) {
-
-    let toRgbOne = hexToRgb(colOneInput.value);
-    let toRgbTwo = hexToRgb(colTwoInput.value);
    document.body.style.background = `linear-gradient(to right, ${colOneInput.value}, ${colTwoInput.value})`
 
-   currentCol.textContent = `background: linear-gradient(to right, rgb(${toRgbOne}), rgb(${toRgbTwo}))`;
+   currentCol.textContent = `background: ${document.body.style.background}`;
      }
 
     if ( buttonRand == false && checkBox.checked && radialOrLinear == true) {
@@ -255,25 +249,33 @@ randomCol.addEventListener('click', () => {
    if (radialOrLinear == true) {
     thisColor = document.body.style.background = `radial-gradient(circle, ${randomC1}, ${randomC2})` 
     currentCol.textContent = `background: ${document.body.style.background}`;
+    const sliced = thisColor.slice(28);
+    const R = sliced.substr(0, sliced.indexOf(','));
+    const G = thisColor.slice(28).split(',')[1];
+    const B = thisColor.slice(28).split(',')[2].slice(0, -1);
+    
+    const R2 = thisColor.slice(-13).substr(0, thisColor.slice(-13).indexOf(',')).replace(/[^0-9.]/g,"")
+    const G2 = thisColor.slice(-13).split(',')[1];
+    const B2 = thisColor.slice(-13).split(',')[2].slice(0, -2);
+    console.log(R2, G2, B2);
+    
+    colOneInput.value = rgbToHex(Number(R),Number(G),Number(B));
+    colTwoInput.value = rgbToHex(Number(R2),Number(G2),Number(B2));
     } else if (radialOrLinear == false) {
 
     thisColor = document.body.style.background = `linear-gradient(to right, ${randomC1}, ${randomC2})`
     currentCol.textContent = `background: ${document.body.style.background}`;
-    let sliced = thisColor.slice(30); 
-    let R = sliced.substr(0, sliced.indexOf(','))
-    let G = thisColor.slice(30).split(',')[1]
-    let B = thisColor.slice(30).split(',')[2].slice(0, -1);
+    const sliced = thisColor.slice(30); 
+    const R = sliced.substr(0, sliced.indexOf(','))
+    const G = thisColor.slice(30).split(',')[1]
+    const B = thisColor.slice(30).split(',')[2].slice(0, -1);
 
-    let R2 = thisColor.slice(-13).substr(0, thisColor.slice(-13).indexOf(',')).replace(/[^0-9.]/g,"")
-    let G2 = thisColor.slice(-13).split(',')[1];
-    let B2 = thisColor.slice(-13).split(',')[2].slice(0, -2);
+    const R2 = thisColor.slice(-13).substr(0, thisColor.slice(-13).indexOf(',')).replace(/[^0-9.]/g,"")
+    const G2 = thisColor.slice(-13).split(',')[1];
+    const B2 = thisColor.slice(-13).split(',')[2].slice(0, -2);
     
     colOneInput.value = rgbToHex(Number(R),Number(G),Number(B));
     colTwoInput.value = rgbToHex(Number(R2),Number(G2),Number(B2));
-    
-        // let replaceLetters = thisColor.replace('linear-gradient(to right, ', '');
-// let popLastParanth = Array.from(replaceLetters).slice(0, -1);
-//currentCol.textContent = `${popLastParanth.join('')}`; //to display only RGB values without linear-gradient property
 }  
 
 buttonRand = true;
