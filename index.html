@@ -34,7 +34,7 @@
         <p id="grad-angle"> Gradient Angle </p>
         <div class="slidecontainer">
             
-            <input type="range" class="slider" id="degrees" name="degrees" min="0" max="360"> <br>
+            <input type="range" class="slider" id="degrees" name="degrees" min="0" max="360" value="90"> <br>
           </div>
         </div>
 
@@ -49,13 +49,10 @@
            background: linear-gradient(to right, rgb(235, 139, 104), rgb(60, 121, 129))
         </h3>
         <div class="colors-div">
-        <input type="color" id="color1" value="#EB8B68">
-        <input type="color" id="color2" value="#3c7981"> <br>
+            <input type="range" name="percent" class="percent-col1" min="0" max="100" value="0"> <span>%</span> <input type="color" id="color1" value="#EB8B68"> 
+        <input type="color" id="color2" value="#3c7981"> <span>%</span> <input type="range" name="percent" class="percent-col2" min="0" max="100" value="100"> <br>
     </div>
-        <!-- <div>
-        <button id="to-left">To Left</button>
-        <button id="to-right">To Right</button>
-        </div> -->
+
         <div id="insert"></div>
         <!-- <div id="space"></div> -->
         <button id="random">Get Random</button>
