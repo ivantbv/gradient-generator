@@ -130,6 +130,13 @@ body {
     background: radial-gradient(circle, #ec5153, #8e7af0)
   }
 
+  /* #radio-options {
+    background: rgb(218 218 218 / 73%);
+    border: solid 2px rgb(141, 136, 136);
+    width: 200px;
+    padding-right: 5px;
+  } */
+
 
 #radio-options label {
    font-size: larger;
@@ -144,17 +151,6 @@ body {
    transition: opacity .3s;
  }
 
-/* #ball {
-    height: 52px;
-    width: 52px;
-    border-radius: 50%;
-    background: linear-gradient(to right, rgba(243, 129, 87, 0.445), #3c798171);
-    
-    color: black;
-    position: relative;
-    margin-left: -240px;
-    margin-top: -55px;
-} */
 #grad-angle {
     background: rgb(245 245 245 / 67%);
     border: solid 2px rgb(141, 136, 136);
@@ -180,10 +176,6 @@ body {
       cursor: pointer;
   }
 
-/* #radial-choice {
-    background: rgba(245, 245, 245, 0.7);
-} */
-
 #options-para {
     background: rgb(245 245 245 / 67%);
     border: solid 2px rgb(141, 136, 136);
@@ -193,6 +185,7 @@ body {
 }
 .copy-clip{
     margin: 35px;
+    margin-top: 40px;
     background-color: rgba(245, 245, 245, 0.5);
      border-radius:0.12em;
      box-sizing: border-box;
@@ -220,10 +213,10 @@ body {
         padding: 4px;
 
         background: rgba(245, 245, 245, 0.7);
-        width: 330px;
+        width: 340px;
         border: 2px solid rgb(141, 136, 136);
 
-        height: 58px;
+        height: 75px;
         display: flex;
         text-align: center;
         align-items: center;
@@ -236,6 +229,14 @@ body {
 
     .col3 {
         margin-top: 5px;
+        position: relative;
+        left: 65px;
+    }
+
+    .percent-col3 {
+      position: relative;
+      bottom: -30px;
+      right: 30px;
     }
 
     .slider {

@@ -13,7 +13,7 @@ const checkBox = document.querySelector('#checkbox');
 const colorsContainer = document.querySelector('.colors-div');
 const percentSlider1 = document.querySelector('.percent-col1');
 const percentSlider2 = document.querySelector('.percent-col2')
-
+let thisColor;
 let buttonRand;
 let radialOrLinear = false;
 let randomC1;
@@ -106,7 +106,6 @@ function percentSliders() {
              if (radialOrLinear == true) {
              document.body.style.background = `radial-gradient(circle, ${colOneInput.value} ${percentSlider1.value}%, ${colTwoInput.value} ${percentSlider2.value}%)`
              currentColorText();
-             console.log(percentSlider1.value)
           } else if (radialOrLinear == false) {
          document.body.style.background = `linear-gradient(to right, ${colOneInput.value} ${percentSlider1.value}%, ${colTwoInput.value} ${percentSlider2.value}%)`
          currentColorText();
@@ -154,14 +153,14 @@ checkBox.addEventListener('click', () => {
     colorsContainer.appendChild(percentSlider3)
     percentSlider3.style.display = 'inline-block'
    //percentSlider1.value = 50;
-        if (buttonRand == true && radialOrLinear == true) {
-            document.body.style.background = `radial-gradient(circle at 50%, ${randomC3} ${percentSlider3.value}%, ${randomC1} ${percentSlider1.value}%, ${randomC2} ${percentSlider2.value}%)`
-            currentColorText();  
-            
-        } else if (buttonRand == true && radialOrLinear == true) {
-        document.body.style.background = `radial-gradient(circle at 50%, ${randomC3} ${percentSlider3.value}%, ${randomC1} ${percentSlider1.value}%, ${randomC2} ${percentSlider2.value}%)`
-        currentColorText();    
-        } else {
+        // if (buttonRand == true && radialOrLinear == true) {
+        //   thisColor = document.body.style.background = `radial-gradient(circle at 50%, ${randomC3} ${percentSlider3.value}%, ${randomC1} ${percentSlider1.value}%, ${randomC2} ${percentSlider2.value}%)`
+        //     currentColorText();   
+        // } else if (buttonRand == true && radialOrLinear == true) {
+        // thisColor = document.body.style.background = `radial-gradient(circle at 50%, ${randomC3} ${percentSlider3.value}%, ${randomC1} ${percentSlider1.value}%, ${randomC2} ${percentSlider2.value}%)`
+        // currentColorText();  
+         //}
+        // else {
 
         if (radialOrLinear == true) {
             document.body.style.background = `radial-gradient(circle, ${colOneInput.value} ${percentSlider1.value}%, ${colTwoInput.value} ${percentSlider2.value}%)`
@@ -170,9 +169,9 @@ checkBox.addEventListener('click', () => {
             document.body.style.background = `linear-gradient(to right, ${colOneValue} ${percentSlider1.value}%, ${colTwoInput.value} ${percentSlider2.value}%)`
             currentColorText();
         }
-    document.body.style.background = `radial-gradient(circle at 50%, ${colThreeInput.value} ${percentSlider3.value}%, ${colOneInput.value} ${percentSlider1.value}%, ${colTwoInput.value} ${percentSlider2.value}%)`
-    currentColorText();
-    }
+        document.body.style.background = `radial-gradient(circle at 50%, ${colThreeInput.value} ${percentSlider3.value}%, ${colOneInput.value} ${percentSlider1.value}%, ${colTwoInput.value} ${percentSlider2.value}%)`
+        currentColorText();
+
     } else if (checkBox.checked == false) {
         colorsContainer.removeChild(colThreeInput);
         colorsContainer.removeChild(percentSlider3)
@@ -186,7 +185,7 @@ checkBox.addEventListener('click', () => {
         }
 
         if (buttonRand == true) {
-            document.body.style.background = `radial-gradient(circle, ${randomC1} ${percentSlider1.value}%, ${randomC2} ${percentSlider2.value}%)`
+           document.body.style.background = `radial-gradient(circle, ${randomC1} ${percentSlider1.value}%, ${randomC2} ${percentSlider2.value}%)`
             currentColorText();
         } else {
             if (radialOrLinear == true) {
@@ -218,14 +217,13 @@ radialGrad.addEventListener('change', () => {
     colThreeInput.style.display = 'inline-block';
     radialOrLinear = true;
     radialOptionsDiv.style.display = 'grid';
-
+    sliderWrap.style.display = 'none';
     if (checkBox.checked == true && radialOrLinear == true) {
         percentSlider3.style.display = 'inline-block';
     } else {
         percentSlider3.style.display = 'none'
     }
-       
-    sliderWrap.style.display = 'none';
+    
     if (checkBox.checked == true) {
         document.body.style.background = `radial-gradient(circle at 50%, ${colThreeInput.value} ${percentSlider3.value}%, ${colOneInput.value} ${percentSlider1.value}%, ${colTwoInput.value} ${percentSlider2.value}%)`
         currentColorText();
@@ -235,6 +233,7 @@ radialGrad.addEventListener('change', () => {
     } else if (buttonRand == false && checkBox.checked && radialOrLinear == true) {
         document.body.style.background = `radial-gradient(circle at 50%, ${colThreeInput.value} ${percentSlider3.value}%, ${colOneInput.value} ${percentSlider1.value}%, ${colTwoInput.value} ${percentSlider2.value}%)`
         currentColorText();
+
     } else if (buttonRand == true && checkBox.checked) {
         thisColor = document.body.style.background = `radial-gradient(circle at 50%, ${randomC3} ${percentSlider3.value}%, ${randomC1} ${percentSlider1.value}%, ${randomC2} ${percentSlider2.value}%)`
     currentColorText();
@@ -246,6 +245,7 @@ radialGrad.addEventListener('change', () => {
     } else if (buttonRand == true) {
         document.body.style.background = `radial-gradient(circle, ${randomC1} ${percentSlider1.value}%, ${randomC2} ${percentSlider2.value}%)`
         currentColorText();
+        
     } else {
      document.body.style.background = `radial-gradient(circle, ${colOneInput.value} ${percentSlider1.value}%, ${colTwoInput.value} ${percentSlider2.value}%)`
      currentColorText();
@@ -304,40 +304,12 @@ linearGrad.addEventListener('change', () => {
 
 colOneInput.addEventListener('input', function() {
     buttonRand = false;
-
-//     if (radialOrLinear == true) {
-//        document.body.style.background = `radial-gradient(circle, ${colOneInput.value}, ${colTwoInput.value})`
-//        currentColorText();
-//     } else if (radialOrLinear == false) {
-//    document.body.style.background = `linear-gradient(to left, ${colTwoInput.value}, ${colOneInput.value})`
-//    currentColorText();
-//     }
-
-//     if (buttonRand == false && checkBox.checked && radialOrLinear == true) {
-//         document.body.style.background = `radial-gradient(circle at 50%, ${colThreeInput.value}, ${colOneInput.value}, ${colTwoInput.value})`
-//         currentColorText();
-//     } 
-//     colOneValue = colOneInput.value;
-//     h2Tag.style.background = `${document.body.style.background}`;
-percentSliders();
+    percentSliders();
 })
 
 colTwoInput.addEventListener('input', () => {
     buttonRand = false;
     percentSliders()
-//     if (radialOrLinear == true) {
-//        document.body.style.background = `radial-gradient(circle, ${colOneInput.value}, ${colTwoInput.value})`
-//        currentColorText();
-//      } else if (radialOrLinear == false) {
-//    document.body.style.background = `linear-gradient(to right, ${colOneInput.value}, ${colTwoInput.value})`
-//    currentColorText();
-//      }
-
-//     if (buttonRand == false && checkBox.checked && radialOrLinear == true) {
-//         document.body.style.background = `radial-gradient(circle at 50%, ${colThreeInput.value}, ${colOneInput.value}, ${colTwoInput.value})`
-//         currentColorText();
-//     } 
-//     h2Tag.style.background = `${document.body.style.background}`;
 })
 
 colThreeInput.addEventListener('input', () => {
@@ -349,7 +321,6 @@ colThreeInput.addEventListener('input', () => {
 
 let randomColor = randomizeCol();
 let randomColor2 = randomizeCol();
-let thisColor;
 
 randomCol.addEventListener('click', () => {
    randomC1 = randomizeCol(colOneInput.value);
@@ -373,45 +344,37 @@ randomCol.addEventListener('click', () => {
        rgbValuesForColWithDegrees2(-19, -5, colTwoInput)
     }
   
-
     } else if (radialOrLinear == true) {
     thisColor = document.body.style.background = `radial-gradient(circle, ${randomC1}, ${randomC2})` 
     currentColorText()
     rgbValuesForColInputs(28, -1, colOneInput);
-    
     const R2 = thisColor.slice(-13).substr(0, thisColor.slice(-13).indexOf(',')).replace(/[^0-9.]/g,"")
     const G2 = thisColor.slice(-13).split(',')[1];
     const B2 = thisColor.slice(-13).split(',')[2].slice(0, -2);
     colTwoInput.value = rgbToHex(Number(R2),Number(G2),Number(B2));
+
     } else if (degreesSlide == true  && percentSliderBool == true) {
       thisColor = document.body.style.background = `linear-gradient(${degreesSlider.value}deg, ${randomC1} ${percentSlider1.value}%, ${randomC2} ${percentSlider2.value}%)`
          currentColorText();       
         rgbValuesForColWithDegrees(26, -4, colOneInput)
        if ( percentSlider2.value < 10)  {
-       //rgbValuesForColWithDegrees2(-14, -5, colTwoInput)
         const R2 = thisColor.slice(-18).substr(0, thisColor.slice(-18).indexOf(',')).replace(/[^0-9.]/g,"")
         const G2 = thisColor.slice(-18).split(',')[1].replace(/[^0-9.]/g,"");
-     const B2 = thisColor.slice(-14).split(',')[2].slice(0, -5).replace(/[^0-9.]/g,"");
-     console.log(R2, G2, B2)
-     colTwoInput.value = rgbToHex(Number(R2),Number(G2),Number(B2));
+        const B2 = thisColor.slice(-14).split(',')[2].slice(0, -5).replace(/[^0-9.]/g,"");
+
+        colTwoInput.value = rgbToHex(Number(R2),Number(G2),Number(B2));
     } else {
        rgbValuesForColWithDegrees2(-18, -6, colTwoInput)
         }
       } 
-      else if (degreesSlide == true && radialOrLinear == false || degreesSlide == false && radialOrLinear == false) {
+      else if (degreesSlide == true && radialOrLinear == false  || degreesSlide == false && radialOrLinear == false) {
         thisColor = document.body.style.background = `linear-gradient(${degreesSlider.value}deg, ${randomC1} ${percentSlider1.value}%, ${randomC2} ${percentSlider2.value}%)`
-           currentColorText();
+        currentColorText();
         rgbValuesForColWithDegrees(26, -4, colOneInput)
         percentSlider2.value < 10 ? rgbValuesForColWithDegrees2(-14, -5, colTwoInput) : rgbValuesForColWithDegrees2(-19, -6, colTwoInput)
-        // const R2 = thisColor.slice(-19).substr(0, thisColor.slice(-19).indexOf(',')).replace(/[^0-9.]/g,"")
-        // const G2 = thisColor.slice(-19).split(',')[1].replace(/[^0-9.]/g,"");
-        // const B2 = thisColor.slice(-19).split(',')[2].slice(0, -6).replace(/[^0-9.]/g,"");
-        // console.log(R2, G2, B2)
-        // colTwoInput.value = rgbToHex(Number(R2),Number(G2),Number(B2));
-
       } else if (radialOrLinear == false) {
 
-    thisColor = document.body.style.background = `linear-gradient(to right, ${randomC1}, ${randomC2})`
+    thisColor = document.body.style.background = `linear-gradient(to right, ${randomC1} ${percentSlider1.value}%, ${randomC2} ${percentSlider2.value}%)`
     currentColorText()
     rgbValuesForColInputs(30, -1, colOneInput)
 
@@ -429,7 +392,6 @@ randomCol.addEventListener('click', () => {
 if (checkBox.checked && radialOrLinear == true) {
    thisColor = document.body.style.background = `radial-gradient(circle at 50%, ${randomC3} ${percentSlider3.value}%, ${randomC1} ${percentSlider1.value}%, ${randomC2} ${percentSlider2.value}%)`
    currentColorText();
-   
    if (percentSlider3.value == 100) {
     rgbValuesForColWithDegrees2(31, -4, colThreeInput);
    } else if (percentSlider3.value > 9 && percentSlider3.value != 100) {
@@ -437,32 +399,7 @@ if (checkBox.checked && radialOrLinear == true) {
    } else {
     rgbValuesForColWithDegrees2(31, -2, colThreeInput);
    }
-    // let sliced = thisColor.slice(30);
-    // const R = sliced.substr(0, sliced.indexOf(',')).replace(/[^0-9.]/g, '');
-    
-    // const G = thisColor.slice(30).split(',')[1]
-    
-    // const B = thisColor.slice(30).split(',')[2].slice(0, -2).replace(/[^0-9.]/g,"");
-    // console.log(R, G, B);
-    //    colThreeInput.value = rgbToHex(Number(R),Number(G),Number(B));
 }
-
-// if (checkBox.checked == false && radialOrLinear == true) {
-//     thisColor = document.body.style.background = `radial-gradient(circle, ${randomC1} ${percentSlider1.value}%, ${randomC2} ${percentSlider2.value}%)` 
-//     currentColorText()
-//         rgbValuesForColWithDegrees(26, -4, colOneInput)
-
-//         if (percentSlider2.value < 10) {
-//         //rgbValuesForColWithDegrees2(-15, -5, colTwoInput)
-//           const R2 = thisColor.slice(-17).substr(0, thisColor.slice(-17).indexOf(',')).replace(/[^0-9.]/g,"")
-//         const G2 = thisColor.slice(-14).split(',')[1].replace(/[^0-9.]/g,"");
-//         const B2 = thisColor.slice(-14).split(',')[2].slice(0, -5).replace(/[^0-9.]/g,"")
-//         console.log(R2, G2, B2)
-//         colTwoInput.value = rgbToHex(Number(R2),Number(G2),Number(B2));
-//     } else {
-//        rgbValuesForColWithDegrees2(-19, -5, colTwoInput)
-//     }
-// }
 h2Tag.style.background = `${document.body.style.background}`;
 
 })
