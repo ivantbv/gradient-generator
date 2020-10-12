@@ -26,6 +26,9 @@ body {
   display: grid;
   justify-items: center;
 }
+/* h1 {
+  margin-top: 0;
+} */
 
 .sidenav {
   height: 100%;
@@ -72,11 +75,13 @@ body {
 }
 
 #main {
+  
+ justify-self: start;
+ position: absolute; 
   -webkit-transition: margin-left .2s;
   -o-transition: margin-left .2s;
   transition: margin-left .2s;
-  padding: 12px;
-  position: absolute;
+  padding: 12px;  
 }
 
 #main span {
