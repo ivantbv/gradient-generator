@@ -220,7 +220,7 @@ body {
 #grad-angle {
   background: rgb(245 245 245 / 67%);
   border: solid 2px rgb(141, 136, 136);
-  width: 125px;
+  /* width: 125px; */
   padding: 3px;
   margin-bottom: 0;
   margin-left: 4px;
